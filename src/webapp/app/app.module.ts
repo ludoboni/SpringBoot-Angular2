@@ -54,7 +54,7 @@ import {ChatService} from "./chat/chat.service";
     AppRoutingModule,
     ReactiveFormsModule,
     LocalStorageModule.withConfig({
-      prefix: 'web-atrio-app',
+      prefix: 'real-english-app',
       storageType: 'localStorage'
     }),
     ToastModule.forRoot()
