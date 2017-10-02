@@ -1,5 +1,4 @@
 import {Component, Input, ViewContainerRef} from '@angular/core';
-import {Http, Response} from '@angular/http';
 import {ToastsManager} from "ng2-toastr";
 @Component({
   selector: 'app-root',
