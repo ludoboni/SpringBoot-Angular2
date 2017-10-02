@@ -44,6 +44,7 @@ public class UserController {
 
 	@RequestMapping(value = "/api/users/", method = RequestMethod.POST)
 	public ResponseEntity<Account> createUser(@RequestBody AccountForm accountForm) throws ConflictException {
+		boolean isFirst = accountRepository.count() == 0;
 		Account user = new Account();
 		Account dbUser = accountRepository.findByUsername(accountForm.getUsername());
 		if (dbUser == null) {
@@ -52,6 +53,10 @@ public class UserController {
 			user.setLastName(accountForm.getLastName());
 			user.setUserName(accountForm.getUsername());
 			user.setPassword(accountForm.getPassword());
+			if(isFirst){
+				user.addRole("ADMIN");
+				user.addRole("PROFESSOR");
+			}
 			accountRepository.save(user);
 			return new ResponseEntity<Account>(user, HttpStatus.CREATED);
 		} else {

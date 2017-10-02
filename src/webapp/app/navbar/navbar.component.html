@@ -14,8 +14,6 @@
     <div class="collapse navbar-collapse"
          [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav" (click)="toggleState()">
-        <li><a routerLink="/list" routerLinkActive="active">Todo list</a></li>
-        <li><a routerLink="/helloworld" routerLinkActive="active">Hello world</a></li>
         <li *ngIf="isLogged()"><a routerLink="/chat" routerLinkActive="active">Chat</a></li>
         <li *ngIf="!isLogged()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
         <li *ngIf="!isLogged()"><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>

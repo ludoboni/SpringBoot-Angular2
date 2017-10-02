@@ -12,16 +12,22 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Address {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	@NotNull
 	private String houseNumber;
+
 	@NotNull
 	private String streetName;
+
 	private String addressDetails;
 	@NotNull
+
 	private String postcode;
+
 	@NotNull
 	private String city;
 
@@ -97,11 +103,11 @@ public class Address {
 	public Address() {
 		super();
 	}
-	
+
 	@Override
-	public boolean equals(Object obj){
+	public boolean equals(Object obj) {
 		Address that = (Address) obj;
-		if(this.id == that.id && this.user == that.user){
+		if (this.id == that.id && this.user == that.user) {
 			return true;
 		} else {
 			return false;
