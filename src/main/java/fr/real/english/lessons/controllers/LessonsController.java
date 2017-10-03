@@ -72,7 +72,7 @@ public class LessonsController {
   }
 
   @RequestMapping(value = "api/lessons-link/{userId}/{lessonId}", method = RequestMethod.POST)
-  public ResponseEntity linkUserToLesson(@PathVariable(value = "lessonId") Long lessonId, @PathVariable(value = "userId") Long userId) {
+  public ResponseEntity linkStudentToLesson(@PathVariable(value = "lessonId") Long lessonId, @PathVariable(value = "userId") Long userId) {
     Account student = accountRepository.findOne(userId);
     Lesson lesson = lessonRepository.findOne(lessonId);
 
