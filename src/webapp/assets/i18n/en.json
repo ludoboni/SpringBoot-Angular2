@@ -1,0 +1,15 @@
+{
+  "home": {
+    "welcome_title": "Welcome to our web application!"
+  },
+  "nav": {
+    "change-lang": "Change to French",
+    "log_out": "Log out",
+    "my_profile": "My profile",
+    "sign_up": "Sign up",
+    "log_in": "Log in",
+    "chat": "Chat",
+    "home": "Home",
+    "toggle_menu": "Close menu"
+  }
+}

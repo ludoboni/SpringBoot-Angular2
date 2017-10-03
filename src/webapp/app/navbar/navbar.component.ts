@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import {HttpService} from "../http/http.service";
 import {ToastsManager} from "ng2-toastr";
+import {TranslateService} from '@ngx-translate/core';
 @Component({
   selector: 'component-navbar',
   templateUrl: './navbar.component.html',
@@ -9,7 +10,7 @@ import {ToastsManager} from "ng2-toastr";
 })
 export class NavbarComponent {
 
-  constructor(private toastr: ToastsManager, private httpService: HttpService){
+  constructor(private toastr: ToastsManager, private httpService: HttpService, private translateService: TranslateService){
   }
 
   isIn = false;   // store state
@@ -25,5 +26,13 @@ export class NavbarComponent {
   public disconnect(){
     this.httpService.logOut();
     this.toastr.info('You have successfully logged out.');
+  }
+
+  public changeLang(){
+    if(this.translateService.currentLang == 'en'){
+      this.translateService.use('fr');
+    } else {
+      this.translateService.use('en');
+    }
   }
 }

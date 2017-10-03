@@ -1,0 +1,15 @@
+{
+  "home": {
+    "welcome_title": "Bienvenue sur notre application web!"
+  },
+  "nav": {
+    "change-lang": "Changer en Anglais",
+    "log_out": "Se déconnecter",
+    "my_profile": "Mon profil",
+    "sign_up": "Créer un compte",
+    "log_in": "Se connecter",
+    "chat": "Tchatter",
+    "home": "Accueil",
+    "toggle_menu": "Fermer menu"
+  }
+}
