@@ -104,6 +104,16 @@
 			<method>POST</method>
 			<roles>PROFESSOR</roles>
 		</route>
+    <route>
+      <url>/api/lessons-link/*</url>
+      <method>POST</method>
+      <roles>PROFESSOR</roles>
+    </route>
+    <route>
+      <url>/api/lessons-students/*</url>
+      <method>GET</method>
+      <roles>PROFESSOR</roles>
+    </route>
 		<route>
 			<url>/api/lessons/*</url>
 			<method>PUT</method>

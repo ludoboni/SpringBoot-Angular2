@@ -1,13 +1,11 @@
 package fr.real.english.lessons.models;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -17,73 +15,100 @@ import fr.real.english.users.models.Account;
 @Entity
 public class Lesson {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long id;
 
-	@JsonIgnore
-	@OneToOne
-	@NotNull
-	private Account creator;
+  @JsonIgnore
+  @OneToOne
+  @NotNull
+  private Account creator;
 
-	@JsonIgnore
-	@OneToMany
-	private List<Account> students;
+  @JsonIgnore
+  @ManyToMany(mappedBy = "lessons", cascade = CascadeType.ALL)
+  private Set<Account> students;
 
-	@NotNull
-	private String content;
+  @NotNull
+  private String content;
 
-	@NotNull
-	private String title;
+  @NotNull
+  private String title;
 
-	@NotNull
-	private String description;
+  @NotNull
+  private String description;
 
-	public Long getId() {
-		return id;
-	}
+  public Lesson() {
+    this.students = new HashSet<>();
+  }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public Account getCreator() {
-		return creator;
-	}
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-	public void setCreator(Account creator) {
-		this.creator = creator;
-	}
+  public Account getCreator() {
+    return creator;
+  }
 
-	public List<Account> getStudents() {
-		return students;
-	}
+  public void setCreator(Account creator) {
+    this.creator = creator;
+  }
 
-	public void setStudents(List<Account> students) {
-		this.students = students;
-	}
+  public Set<Account> getStudents() {
+    return students;
+  }
 
-	public String getContent() {
-		return content;
-	}
+  public void setStudents(Set<Account> students) {
+    this.students = students;
+  }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+  public String getContent() {
+    return content;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void addStudent(Account student){
+    if(!this.students.contains(student)){
+      this.students.add(student);
+    }
+  }
+
+  public void removeStudent(Account student){
+    if(this.students.contains(student)) {
+      this.students.remove(student);
+    }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    Lesson lesson = (Lesson) o;
+
+    if (id != null ? !id.equals(lesson.id) : lesson.id != null) return false;
+    return creator != null ? creator.equals(lesson.creator) : lesson.creator == null;
+  }
 }
