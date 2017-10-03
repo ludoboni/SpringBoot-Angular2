@@ -47,7 +47,7 @@ public class Account {
 
   @JsonIgnore
   @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="student_lessons", joinColumns = @JoinColumn(name="lesson_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name="student_id", referencedColumnName = "id"))
+  @JoinTable(name="student_lessons", joinColumns = @JoinColumn(name="student_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name="lesson_id", referencedColumnName = "id"))
   private Set<Lesson> lessons;
 
   @NotNull
