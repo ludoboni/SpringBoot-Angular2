@@ -71,18 +71,27 @@ public class LessonsController {
     return new ResponseEntity<>(lessonRepository.save(lessonFromDB), HttpStatus.OK);
   }
 
-  @RequestMapping(value = "api/lessons-link/{userId}/{lessonId}", method = RequestMethod.POST)
+  @RequestMapping(value = "api/lessons-link/{userId}/{lessonId}", method = RequestMethod.GET)
   public ResponseEntity linkStudentToLesson(@PathVariable(value = "lessonId") Long lessonId, @PathVariable(value = "userId") Long userId) {
     Account student = accountRepository.findOne(userId);
     Lesson lesson = lessonRepository.findOne(lessonId);
 
     lesson.addStudent(student);
-    return new ResponseEntity<>(lesson, HttpStatus.OK);
+    return new ResponseEntity<>(lessonRepository.save(lesson), HttpStatus.OK);
   }
 
   @RequestMapping(value = "api/lessons-students/{lessonId}", method = RequestMethod.GET)
   public ResponseEntity<Set> getStudentsForLesson(@PathVariable(value = "lessonId") Long lessonId) {
     Set<Account> students = lessonRepository.findOne(lessonId).getStudents();
     return new ResponseEntity<>(students, HttpStatus.OK);
+  }
+
+  @RequestMapping(value="api/lessons-unlink/{userId}/{lessonId}", method=RequestMethod.GET)
+  public ResponseEntity unlinkStudentFromLesson(@PathVariable(value = "lessonId") Long lessonId, @PathVariable(value = "userId") Long userId){
+    Account student = accountRepository.findOne(userId);
+    Lesson lesson = lessonRepository.findOne(lessonId);
+
+    lesson.removeStudent(student);
+    return new ResponseEntity<>(lessonRepository.save(lesson), HttpStatus.OK);
   }
 }
