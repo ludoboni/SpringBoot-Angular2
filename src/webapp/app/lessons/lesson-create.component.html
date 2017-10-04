@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row" *ngIf="lessons.length > 0">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Lessons</h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let lesson of lessons">
+            <a (click)="goto(lesson.id)">{{lesson.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <form class="form-horizontal">
+      <fieldset>
+        <!-- Form Name -->
+        <legend>Add Lesson</legend>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label pull-left" for="title">Title</label>
+          <div class="col-md-4 pull-left">
+            <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="true"
+                   #title/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-4 control-label pull-left" for="description">Description</label>
+          <div class="col-md-4 pull-left">
+            <input id="description" name="description" type="text" placeholder="Description"
+                   class="form-control input-md"
+                   required="true"
+                   #description/>
+          </div>
+        </div>
+
+        <div id="editor"></div>
+
+      </fieldset>
+    </form>
+    <button class="btn btn-primary"
+            (click)="add(title.value, description.value); title.value=''; description.value='';">
+      Add
+    </button>
+  </div>
+</div>

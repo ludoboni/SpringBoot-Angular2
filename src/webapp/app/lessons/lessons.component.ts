@@ -44,4 +44,8 @@ export class LessonComponent implements OnInit {
   goto(lesson: Lesson): void {
     this.router.navigate(['/lesson', lesson.id]);
   }
+
+  myCreatedLessons(): void {
+    this.router.navigate(['/lessons-created']);
+  }
 }

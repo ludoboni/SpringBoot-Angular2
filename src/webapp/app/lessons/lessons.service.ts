@@ -63,10 +63,10 @@ export class LessonService {
     });
   }
 
-  public createLesson(number: string, type: string): Promise<Lesson[]> {
+  public createLesson(title: string, description: string, content: string): Promise<Lesson[]> {
     return new Promise((resolve, reject) => {
       this.httpService
-        .post(this.lessonUrl, {number: number, type: type})
+        .post(this.lessonUrl, {title: title, description: description, content: content})
         .then(res => {
           let lessonsJSON = res.json();
           let lessons = Array<Lesson>();

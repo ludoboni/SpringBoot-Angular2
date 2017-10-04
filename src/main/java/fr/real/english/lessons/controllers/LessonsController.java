@@ -48,7 +48,8 @@ public class LessonsController {
   public ResponseEntity createLesson(@RequestBody Lesson lesson, HttpServletRequest request) {
     Account creator = accountRepository.findByUsername(UserService.getUser(request));
     lesson.setCreator(creator);
-    return new ResponseEntity<>(lesson, HttpStatus.CREATED);
+    lessonRepository.save(lesson);
+    return new ResponseEntity<>(lessonRepository.findByCreator(creator), HttpStatus.CREATED);
   }
 
   @RequestMapping(value = "api/lessons/{lessonId}", method = RequestMethod.DELETE)

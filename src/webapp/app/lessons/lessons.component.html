@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row" *ngIf="lessons.length > 0">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Phone numbers</h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let lesson of lessons">
+            <a (click)="goto(lesson.id)">{{lesson.title}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="userProf" class="row">
+    <button class="btn btn-danger" (click)="myCreatedLessons()">My created lessons</button>
+  </div>
+</div>
