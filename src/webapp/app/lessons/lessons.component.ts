@@ -20,14 +20,14 @@ export class LessonComponent implements OnInit {
   ngOnInit(): void {
     this.lessons = [];
     this.sub = this.route.params.subscribe(() => {
-      this.lessonService.getLessons().then(lessons => {
-        this.userService.getMyProfile().then((user) => {
-          user.roles.forEach((role) => {
-            if (role == "PROFESSOR") {
-              this.userProf = true;
-            }
-          });
+      this.userService.getMyProfile().then((user) => {
+        user.roles.forEach((role) => {
+          if (role == "PROFESSOR") {
+            this.userProf = true;
+          }
         });
+      });
+      this.lessonService.getLessons().then(lessons => {
         this.lessons = lessons;
       });
     });

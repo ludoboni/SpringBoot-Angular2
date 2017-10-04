@@ -1,4 +1,17 @@
 <div class="container">
 	<h2>Admin</h2>
-  <code>{{routes}}</code>
+  <div *ngIf="routes.length > 0">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Lessons</h4>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let route of routes">
+            <a>{{route.url}}, {{route.method}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

@@ -34,7 +34,7 @@ import {LessonComponent} from "./lessons/lessons.component";
 import {LessonCreateComponent} from "./lessons/lesson-create.component";
 import {LessonDetailComponent} from "./lessons/lessons-detail.component";
 import {LessonCreateDetailComponent} from "./lessons/lesson-create-detail.component";
-
+declare var tinymce: any;
 
 
 export function createTranslateLoader(http: HttpClient) {

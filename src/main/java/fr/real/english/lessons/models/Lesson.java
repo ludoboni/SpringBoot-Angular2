@@ -23,7 +23,8 @@ public class Lesson {
   private Account creator;
 
   @JsonIgnore
-  @ManyToMany(mappedBy = "lessons", cascade = CascadeType.ALL)
+  @OneToMany
+  @JoinColumn(name = "students")
   private Set<Account> students;
 
   @NotNull

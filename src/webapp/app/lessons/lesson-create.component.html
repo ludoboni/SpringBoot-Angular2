@@ -7,7 +7,7 @@
         </div>
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let lesson of lessons">
-            <a (click)="goto(lesson.id)">{{lesson.title}}</a>
+            <a (click)="goto(lesson)">{{lesson.title}}</a>
           </li>
         </ul>
       </div>

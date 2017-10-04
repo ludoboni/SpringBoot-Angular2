@@ -4,6 +4,7 @@ import {ToastsManager} from "ng2-toastr";
 import {LessonService} from "./lessons.service";
 import {Lesson} from "./lesson";
 import {UserService} from "../users/services/users.service";
+import {User} from "../users/user";
 declare var tinymce: any;
 
 @Component({
@@ -74,6 +75,6 @@ export class LessonCreateComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   goto(lesson: Lesson): void {
-    this.router.navigate(['/lesson-create', lesson.id]);
+    this.router.navigate(['/lessons-created', lesson.id]);
   }
 }

@@ -1,0 +1,40 @@
+<div *ngIf="lesson" class="container">
+  <form class="form-horizontal">
+    <fieldset>
+      <!-- Form Name -->
+      <legend>Update Lesson</legend>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="title">Title</label>
+        <div class="col-md-4 pull-left">
+          <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="true"
+                 [(ngModel)]="lesson.title"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="description">Description</label>
+        <div class="col-md-4 pull-left">
+          <input id="description" name="description" type="text" placeholder="Description"
+                 class="form-control input-md"
+                 required="true"
+                 [(ngModel)]="lesson.description"/>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+  <select #selectedUser>
+    <option disabled  >Select user</option>
+    <option *ngFor="let user of users" [value]="user.id">{{user.username}}</option>
+  </select>
+  <button type="button" class="btn btn-primary"
+          (click)="link(selectedUser.value)">Link student
+  </button>
+  <button type="button" class="btn btn-primary"
+          (click)="update()">Save
+  </button>
+  <button type="button" class="btn btn-primary"
+          (click)="goBack()">Back
+  </button>
+</div>

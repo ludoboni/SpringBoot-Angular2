@@ -91,8 +91,8 @@ export class LessonService {
       .catch(this.handleError);
   }
 
-  public linkStudent(id: number, user: number) {
-    const url = `lessons-link/${id}`;
+  public linkStudent(user: number, id: number) {
+    const url = `lessons-link/${user}/${id}`;
     return this.httpService.get(url)
       .then(res => this.mapLesson(res.json()))
       .catch(this.handleError);

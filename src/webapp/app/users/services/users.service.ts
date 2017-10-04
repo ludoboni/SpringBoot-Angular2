@@ -12,11 +12,18 @@ export class UserService {
   }
 
   getUsers(): Promise<User[]> {
-    return this.httpService.get(this.usersUrl)
-      .then(res => {
-          <User[]>(res.json());
-        }
-      ).catch(this.handleError);
+    return new Promise((resolve, reject) => {
+        this.httpService.get(this.usersUrl)
+          .then(res => {
+            let usersJSON = res.json();
+            let users = Array<User>();
+            usersJSON.forEach(userJSON => {
+              users.push(this.mapUser(userJSON));
+            });
+            resolve(users);
+          }).catch(this.handleError);
+      }
+    );
   }
 
   deleteUser(id: number) {
@@ -28,7 +35,13 @@ export class UserService {
 
   createUser(firstName: string, lastName: string, username: string, email: string, password: string): Promise<User[]> {
     return this.httpService
-      .post(this.usersUrl, {firstName: firstName, lastName: lastName,username: username, password: password, email: email})
+      .post(this.usersUrl, {
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        password: password,
+        email: email
+      })
       .then(res => <User[]>(res.json()))
       .catch(this.handleError);
   }
@@ -57,7 +70,7 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this.httpService.get(url)
         .then(res => {
-          let user = this.mapUser(res);
+          let user = this.mapUser(res.json());
           resolve(user);
         }).catch(reject);
     })
@@ -65,8 +78,7 @@ export class UserService {
   }
 
   //map a user object
-  private mapUser(res) {
-    let obj = res.json();
+  private mapUser(obj) {
     let user = new User();
     user.username = obj.username;
     user.firstName = obj.firstName;

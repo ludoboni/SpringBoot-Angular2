@@ -45,11 +45,6 @@ public class Account {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private Set<Telephone> telephones;
 
-  @JsonIgnore
-  @ManyToMany(cascade = CascadeType.ALL)
-  @JoinTable(name="student_lessons", joinColumns = @JoinColumn(name="student_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name="lesson_id", referencedColumnName = "id"))
-  private Set<Lesson> lessons;
-
   @NotNull
   private String roles = "";
 
@@ -57,13 +52,6 @@ public class Account {
     this.username = username;
   }
 
-  public Set<Lesson> getLessons() {
-    return lessons;
-  }
-
-  public void setLessons(Set<Lesson> lessons) {
-    this.lessons = lessons;
-  }
 
   public List<String> getRoles() {
     return RoleService.getRoles(this);
@@ -79,10 +67,6 @@ public class Account {
 
   public void addRole(String role) {
     RoleService.addRole(this, role);
-  }
-
-  public void addLesson(Lesson lesson){
-    this.getLessons().add(lesson);
   }
 
   public void removeRole(String role) {
