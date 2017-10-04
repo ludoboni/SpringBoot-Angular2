@@ -26,6 +26,8 @@ import {ChatService} from "./chat/chat.service";
 import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AdminComponent} from "./admin/admin.component";
+import {AdminService} from "./admin/admin.service";
 
 
 
@@ -46,7 +48,8 @@ export function createTranslateLoader(http: HttpClient) {
     AddressDetailComponent,
     UserEditComponent,
     NavbarComponent,
-    ChatComponent
+    ChatComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [HttpService, UserService, TelephoneService, AddressService, ChatService, HttpClient, TranslateService],
+  providers: [HttpService, UserService, TelephoneService, AddressService, ChatService, HttpClient, TranslateService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

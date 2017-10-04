@@ -9,6 +9,7 @@ import {TelephoneDetailComponent} from "./users/telephones/telephone-detail.comp
 import {AddressDetailComponent} from "./users/addresses/address-detail.component";
 import {UserEditComponent} from "./users/profile/user-profile-edit.component";
 import {ChatComponent} from "./chat/chat.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'telephone/:id', component: TelephoneDetailComponent},
   { path: 'address/:id', component: AddressDetailComponent},
   { path: 'profile/me/edit', component: UserEditComponent},
-  { path: 'chat', component: ChatComponent }
+  { path: 'chat', component: ChatComponent },
+  { path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
