@@ -9,6 +9,10 @@ import {AddressDetailComponent} from "./users/addresses/address-detail.component
 import {UserEditComponent} from "./users/profile/user-profile-edit.component";
 import {ChatComponent} from "./chat/chat.component";
 import {AdminComponent} from "./admin/admin.component";
+import {LessonComponent} from "./lessons/lessons.component";
+import {LessonDetailComponent} from "./lessons/lessons-detail.component";
+import {LessonCreateComponent} from "./lessons/lesson-create.component";
+import {LessonCreateDetailComponent} from "./lessons/lesson-create-detail.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent},
@@ -20,7 +24,11 @@ const routes: Routes = [
   {path: 'address/:id', component: AddressDetailComponent},
   {path: 'profile/me/edit', component: UserEditComponent},
   {path: 'chat', component: ChatComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: 'lessons', component: LessonComponent},
+  {path: 'lessons/:id', component: LessonDetailComponent},
+  {path: 'lessons-created', component: LessonCreateComponent},
+  {path: 'lessons-created/:id', component: LessonCreateDetailComponent}
 ];
 
 @NgModule({

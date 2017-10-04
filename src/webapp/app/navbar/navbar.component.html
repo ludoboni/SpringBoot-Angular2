@@ -17,6 +17,7 @@
         <li *ngIf="isLogged()"><a routerLink="/chat" routerLinkActive="active">{{'nav.chat' | translate}}</a></li>
         <li *ngIf="!isLogged()"><a routerLink="/login" routerLinkActive="active">{{'nav.log_in' | translate}}</a></li>
         <li *ngIf="!isLogged()"><a routerLink="/signup" routerLinkActive="active">{{'nav.sign_up' | translate}}</a></li>
+        <li *ngIf="isLogged()"><a routerLink="/lessons" routerLinkActive="active">{{'nav.lessons' | translate}}</a></li>
         <li *ngIf="isLogged()"><a [routerLink]="['profile', 0]" routerLinkActive="active">{{'nav.my_profile' |
           translate}}</a></li>
         <li *ngIf="isLogged()"><a class="activeLink" (click)="disconnect()">{{'nav.log_out' | translate}}</a></li>

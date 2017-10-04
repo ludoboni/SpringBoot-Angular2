@@ -57,7 +57,6 @@ export class UserService {
     return new Promise((resolve, reject) => {
       this.httpService.get(url)
         .then(res => {
-          console.log('user : ', res.json());
           let user = this.mapUser(res);
           resolve(user);
         }).catch(reject);
@@ -75,7 +74,6 @@ export class UserService {
     user.email = obj.email;
     user.id = obj.id;
     user.roles = obj.roles;
-    console.log(user);
     return user;
   }
 }

@@ -1,8 +1,6 @@
 package fr.real.english.lessons.models;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;

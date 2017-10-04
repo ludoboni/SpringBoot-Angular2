@@ -33,12 +33,14 @@ public class LessonsController {
   @RequestMapping(value = "api/lessons/", method = RequestMethod.GET)
   public ResponseEntity<Set> myLessons(HttpServletRequest request) {
     Account loggedInUser = accountRepository.findByUsername(UserService.getUser(request));
-    Set<Lesson> resultSet;
-    if (loggedInUser.getRoles().contains("PROFESSOR")) {
-      resultSet = lessonRepository.findByCreator(loggedInUser.getId());
-    } else {
-      resultSet = loggedInUser.getLessons();
-    }
+    Set<Lesson> resultSet = loggedInUser.getLessons();
+    return new ResponseEntity<>(resultSet, HttpStatus.OK);
+  }
+  
+  @RequestMapping(value = "api/created-lessons/", method = RequestMethod.GET)
+  public ResponseEntity<Set> myCreatedLessons(HttpServletRequest request) {
+    Account loggedInUser = accountRepository.findByUsername(UserService.getUser(request));
+    Set<Lesson> resultSet = lessonRepository.findByCreator(loggedInUser);
     return new ResponseEntity<>(resultSet, HttpStatus.OK);
   }
 

@@ -29,6 +29,11 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from "./admin/admin.component";
 import {AdminService} from "./admin/admin.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LessonService} from "./lessons/lessons.service";
+import {LessonComponent} from "./lessons/lessons.component";
+import {LessonCreateComponent} from "./lessons/lesson-create.component";
+import {LessonDetailComponent} from "./lessons/lessons-detail.component";
+import {LessonCreateDetailComponent} from "./lessons/lesson-create-detail.component";
 
 
 
@@ -50,7 +55,11 @@ export function createTranslateLoader(http: HttpClient) {
     UserEditComponent,
     NavbarComponent,
     ChatComponent,
-    AdminComponent
+    AdminComponent,
+    LessonComponent,
+    LessonDetailComponent,
+    LessonCreateComponent,
+    LessonCreateDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [HttpService, UserService, TelephoneService, AddressService, ChatService, HttpClient, TranslateService, AdminService],
+  providers: [HttpService, UserService, TelephoneService, AddressService, ChatService, HttpClient, TranslateService, AdminService, LessonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
