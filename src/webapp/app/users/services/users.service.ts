@@ -3,8 +3,6 @@ import {User} from "../user";
 
 import 'rxjs/add/operator/toPromise';
 import {HttpService} from "../../http/http.service";
-import {Telephone} from "../telephones/telephone";
-import {Address} from "../addresses/address";
 
 @Injectable()
 export class UserService {

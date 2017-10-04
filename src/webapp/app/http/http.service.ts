@@ -17,7 +17,6 @@ export class HttpService {
   constructor(private toastr: ToastsManager, private http: Http, private router: Router, private localStorageService: LocalStorageService) {
     this.localStorageService.set('csrf_token', '');
     this.localStorageService.set('logged', false);
-
   }
 
   get(url: string): Promise<any> {
