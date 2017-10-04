@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {AdminService} from "./admin.service";
+import {Route} from "./route";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   moduleId: module.id,
@@ -7,10 +10,16 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() {
+  sub: any;
+  routes;
+  constructor(private adminService: AdminService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.sub = this.activatedRoute.params.subscribe(() => {
+      this.adminService.getRoutes().then(routes => {
+        this.routes = routes;
+      });
+    });
   }
 }

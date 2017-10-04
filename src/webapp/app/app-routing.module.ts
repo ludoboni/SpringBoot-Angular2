@@ -1,4 +1,3 @@
-
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {UsersComponent} from "./users/profile/users-profile.component";
@@ -12,16 +11,16 @@ import {ChatComponent} from "./chat/chat.component";
 import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent},
-  { path: 'profile/:id', component: UsersComponent },
-  { path: 'profile/me', component: UsersComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent},
-  { path: 'telephone/:id', component: TelephoneDetailComponent},
-  { path: 'address/:id', component: AddressDetailComponent},
-  { path: 'profile/me/edit', component: UserEditComponent},
-  { path: 'chat', component: ChatComponent },
-  { path: 'admin', component: AdminComponent}
+  {path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent},
+  {path: 'profile/:id', component: UsersComponent},
+  {path: 'profile/me', component: UsersComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'telephone/:id', component: TelephoneDetailComponent},
+  {path: 'address/:id', component: AddressDetailComponent},
+  {path: 'profile/me/edit', component: UserEditComponent},
+  {path: 'chat', component: ChatComponent},
+  {path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -29,4 +28,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

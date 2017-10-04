@@ -10,6 +10,7 @@
     "log_in": "Log in",
     "chat": "Chat",
     "home": "Home",
-    "toggle_menu": "Close menu"
+    "toggle_menu": "Close menu",
+    "admin": "Admin"
   }
 }

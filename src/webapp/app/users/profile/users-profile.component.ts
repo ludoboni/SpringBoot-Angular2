@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   sub: any;
   phoneMenu = false;
   addressMenu = false;
-
+  admin = false;
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
       } else {
         this.usersService.getUser(id).then(user => {
           this.user = user;
+          this.isAdmin();
         }).catch(result => {
           console.log(result);
         });
@@ -48,11 +49,21 @@ export class UsersComponent implements OnInit {
     this.phoneMenu ? this.phoneMenu = false : this.phoneMenu = true;
   }
 
-  addressMenuEnable(): void{
+  addressMenuEnable(): void {
     this.addressMenu ? this.addressMenu = false : this.addressMenu = true;
   }
 
-  public editProfile(): void{
+  goToAdminPage(): void {
+    this.router.navigate(['/admin']);
+  }
+
+  isAdmin(): void {
+    this.user.roles.forEach((role) => {
+      this.admin = role === "ADMIN";
+    });
+  }
+
+  public editProfile(): void {
     this.router.navigate(['/profile/me/edit']);
   }
 }

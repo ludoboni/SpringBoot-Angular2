@@ -28,6 +28,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AdminComponent} from "./admin/admin.component";
 import {AdminService} from "./admin/admin.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -53,6 +54,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     HttpClientModule,

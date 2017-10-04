@@ -5,17 +5,26 @@ import {Route} from "./route";
 
 @Injectable()
 export class AdminService {
-  private adminUrl = "admin/";
+  private adminUrl = "routes/";
 
   constructor(private httpService: HttpService) {
   }
 
-  public getRoutes(object: any) {
-    return this.httpService.get(this.adminUrl)
-      .then(res => {
-          <Route[]>(res.json());
-        }
-      ).catch(this.handleError);
+  public getRoutes() {
+    return new Promise((resolve, reject) => {
+      this.httpService.get(this.adminUrl)
+        .then(res => {
+            let routesJSON = res.json();
+            let route = Array<Route>();
+          routesJSON.forEach(routeJSON => {
+            route.push(this.mapRoute(routeJSON));
+            });
+            resolve(route);
+          }
+        ).catch((err) => {
+        reject(this.handleError(err));
+      });
+    });
   }
 
   public getRoute(id: number) {
@@ -26,7 +35,7 @@ export class AdminService {
   }
 
   public modifyRoute(object: any) {
-    const url = this.adminUrl + `/${object.id}`;
+    const url = `${this.adminUrl}${object.id}`;
     return this.httpService.put(url, object)
       .then(res => <Route>(res.json()))
       .catch(this.handleError);
@@ -38,8 +47,7 @@ export class AdminService {
   }
 
   //map a user object
-  private mapUser(res) {
-    let obj = res.json();
+  private mapRoute(obj) {
     let route = new Route();
     route.id = obj.id;
     route.method = obj.method;

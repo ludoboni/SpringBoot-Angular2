@@ -20,6 +20,7 @@
         <li *ngIf="isLogged()"><a [routerLink]="['profile', 0]" routerLinkActive="active">{{'nav.my_profile' |
           translate}}</a></li>
         <li *ngIf="isLogged()"><a class="activeLink" (click)="disconnect()">{{'nav.log_out' | translate}}</a></li>
+        <li *ngIf="isLogged()"><a routerLink="/admin" routerLinkActive="active">{{'nav.admin' | translate}}</a></li>
         <li><a (click)="changeLang()">{{'nav.change-lang' | translate}}</a></li>
       </ul>
     </div>
