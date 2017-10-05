@@ -23,8 +23,7 @@ public class Lesson {
   private Account creator;
 
   @JsonIgnore
-  @OneToMany
-  @JoinColumn(name = "students")
+  @ManyToMany(mappedBy = "lessons")
   private Set<Account> students;
 
   @NotNull
@@ -89,6 +88,9 @@ public class Lesson {
   }
 
   public void addStudent(Account student){
+    if(this.students == null){
+      this.students = new HashSet<>();
+    }
     if(!this.students.contains(student)){
       this.students.add(student);
     }

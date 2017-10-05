@@ -42,7 +42,7 @@ export class LessonComponent implements OnInit {
   }
 
   goto(lesson: Lesson): void {
-    this.router.navigate(['/lesson', lesson.id]);
+    this.router.navigate(['/lessons', lesson.id]);
   }
 
   myCreatedLessons(): void {

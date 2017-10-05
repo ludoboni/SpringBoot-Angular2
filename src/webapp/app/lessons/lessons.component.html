@@ -3,11 +3,11 @@
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4>Phone numbers</h4>
+          <h4>My lessons</h4>
         </div>
         <ul class="list-group">
           <li class="list-group-item" *ngFor="let lesson of lessons">
-            <a (click)="goto(lesson.id)">{{lesson.title}}</a>
+            <a (click)="goto(lesson)">{{lesson.title}}</a>
           </li>
         </ul>
       </div>

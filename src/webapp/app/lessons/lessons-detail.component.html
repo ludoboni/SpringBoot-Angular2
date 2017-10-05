@@ -1,5 +1,5 @@
-<div class="container">
+<div class="container" *ngIf="lesson">
   <div>{{lesson.title}}</div>
   <div>{{lesson.description}}</div>
-  <div>{{lesson.content}}</div>
+  <div [innerHTML]="lesson.content"></div>
 </div>

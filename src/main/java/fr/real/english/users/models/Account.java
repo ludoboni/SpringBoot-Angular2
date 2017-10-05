@@ -1,5 +1,6 @@
 package fr.real.english.users.models;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,6 +35,16 @@ public class Account {
   @NotNull
   private String firstName;
 
+  public Set<Lesson> getLessons() {
+    return lessons;
+  }
+
+  public void setLessons(Set<Lesson> lessons) {
+    this.lessons = lessons;
+  }
+
+
+
   @NotNull
   private String lastName;
 
@@ -44,6 +55,12 @@ public class Account {
   @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private Set<Telephone> telephones;
+
+  @JsonIgnore
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(name = "student_lesson", joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "lesson_id", referencedColumnName = "id"))
+  private Set<Lesson> lessons;
 
   @NotNull
   private String roles = "";
@@ -161,5 +178,12 @@ public class Account {
       return true;
     } else
       return false;
+  }
+
+  public void addLesson(Lesson lesson) {
+    if(this.lessons == null){
+      this.lessons = new HashSet<>();
+    }
+    this.lessons.add(lesson);
   }
 }

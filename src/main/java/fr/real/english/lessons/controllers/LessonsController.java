@@ -36,14 +36,7 @@ public class LessonsController {
 	@RequestMapping(value = "api/lessons/", method = RequestMethod.GET)
 	public ResponseEntity<List> myLessons(HttpServletRequest request) {
 		Account loggedInUser = accountRepository.findByUsername(UserService.getUser(request));
-		Iterable<Lesson> resultSet = lessonRepository.findAll();
-		ArrayList<Lesson> list = new ArrayList<Lesson>();
-		resultSet.forEach((Lesson lesson) -> {
-			if(lesson.getStudents().contains(loggedInUser)){
-				list.add(lesson);
-			}
-		});
-		return new ResponseEntity<>(list, HttpStatus.OK);
+		return new ResponseEntity (loggedInUser.getLessons(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "api/created-lessons/", method = RequestMethod.GET)
@@ -90,9 +83,10 @@ public class LessonsController {
 		Account student = accountRepository.findOne(userId);
 		Lesson lesson = lessonRepository.findOne(lessonId);
 		lesson.addStudent(student);
-		lessonRepository.save(lesson);
+		lesson = lessonRepository.save(lesson);
+		student.addLesson(lesson);
 		accountRepository.save(student);
-		
+    System.out.println(lesson.getStudents().size());
 		return new ResponseEntity<>(lesson, HttpStatus.OK);
 	}
 
